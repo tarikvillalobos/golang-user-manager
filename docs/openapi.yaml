@@ -3,33 +3,33 @@ info:
   title: GoLang User Manager API
   version: 1.0.0
   description: >
-    Documentação completa da API do GoLang User Manager (Auth, Users, Profiles, Plans e Subscriptions).
-    Compatível com Scalar, Swagger e Postman.
+    Complete documentation for the GoLang User Manager API (Auth, Users, Profiles, Plans, and Subscriptions).
+    Compatible with Scalar, Swagger, and Postman.
   contact:
     name: Tarik Villalobos
     url: https://github.com/tarikvillalobos
 
 servers:
   - url: http://localhost:8080
-    description: Ambiente local
+    description: Local environment
 
 tags:
   - name: Auth
-    description: Registro e autenticação de usuários
+    description: User registration and authentication
   - name: Users
-    description: CRUD de usuários e gestão de senhas
+    description: User CRUD and password management
   - name: Profile
-    description: Perfil do usuário autenticado
+    description: Authenticated user profile
   - name: Plans
-    description: Planos disponíveis
+    description: Available plans
   - name: Subscriptions
-    description: Assinaturas dos usuários
+    description: User subscriptions
 
 paths:
   /auth/register:
     post:
       tags: [Auth]
-      summary: Registrar novo usuário
+      summary: Register a new user
       requestBody:
         required: true
         content:
@@ -38,20 +38,20 @@ paths:
               $ref: '#/components/schemas/RegisterRequest'
       responses:
         '201':
-          description: Usuário registrado com sucesso
+          description: User successfully registered
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
         '400':
-          description: Dados inválidos
+          description: Invalid data
         '409':
-          description: E-mail já cadastrado
+          description: Email already registered
 
   /auth/login:
     post:
       tags: [Auth]
-      summary: Login de usuário
+      summary: User login
       requestBody:
         required: true
         content:
@@ -60,18 +60,18 @@ paths:
               $ref: '#/components/schemas/LoginRequest'
       responses:
         '200':
-          description: Login bem-sucedido
+          description: Successful login
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
         '401':
-          description: Credenciais inválidas
+          description: Invalid credentials
 
   /auth/refresh:
     post:
       tags: [Auth]
-      summary: Atualizar token JWT
+      summary: Refresh JWT token
       requestBody:
         required: true
         content:
@@ -80,7 +80,7 @@ paths:
               $ref: '#/components/schemas/RefreshRequest'
       responses:
         '200':
-          description: Novo token JWT
+          description: New JWT token
           content:
             application/json:
               schema:
@@ -89,10 +89,10 @@ paths:
   /users:
     get:
       tags: [Users]
-      summary: Listar todos os usuários
+      summary: List all users
       responses:
         '200':
-          description: Lista de usuários
+          description: List of users
           content:
             application/json:
               schema:
@@ -102,7 +102,7 @@ paths:
 
     post:
       tags: [Users]
-      summary: Criar novo usuário
+      summary: Create a new user
       requestBody:
         required: true
         content:
@@ -111,7 +111,7 @@ paths:
               $ref: '#/components/schemas/CreateUserRequest'
       responses:
         '201':
-          description: Usuário criado com sucesso
+          description: User successfully created
           content:
             application/json:
               schema:
@@ -120,7 +120,7 @@ paths:
   /users/{id}:
     get:
       tags: [Users]
-      summary: Buscar usuário por ID
+      summary: Get user by ID
       parameters:
         - in: path
           name: id
@@ -129,17 +129,17 @@ paths:
             type: integer
       responses:
         '200':
-          description: Usuário encontrado
+          description: User found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
         '404':
-          description: Usuário não encontrado
+          description: User not found
 
     put:
       tags: [Users]
-      summary: Atualizar dados de um usuário
+      summary: Update user data
       parameters:
         - in: path
           name: id
@@ -154,7 +154,7 @@ paths:
               $ref: '#/components/schemas/UpdateUserRequest'
       responses:
         '200':
-          description: Usuário atualizado
+          description: User updated
           content:
             application/json:
               schema:
@@ -162,7 +162,7 @@ paths:
 
     delete:
       tags: [Users]
-      summary: Excluir usuário
+      summary: Delete a user
       parameters:
         - in: path
           name: id
@@ -171,12 +171,12 @@ paths:
             type: integer
       responses:
         '204':
-          description: Usuário excluído com sucesso
+          description: User successfully deleted
 
   /users/{id}/password:
     put:
       tags: [Users]
-      summary: Atualizar senha do usuário
+      summary: Update user password
       parameters:
         - in: path
           name: id
@@ -191,17 +191,17 @@ paths:
               $ref: '#/components/schemas/UpdatePasswordRequest'
       responses:
         '200':
-          description: Senha atualizada com sucesso
+          description: Password successfully updated
         '400':
-          description: Senha inválida
+          description: Invalid password
 
   /profile:
     get:
       tags: [Profile]
-      summary: Obter perfil do usuário autenticado
+      summary: Get the authenticated user profile
       responses:
         '200':
-          description: Dados do perfil
+          description: Profile data
           content:
             application/json:
               schema:
@@ -209,7 +209,7 @@ paths:
 
     put:
       tags: [Profile]
-      summary: Atualizar perfil do usuário autenticado
+      summary: Update the authenticated user profile
       requestBody:
         required: true
         content:
@@ -218,15 +218,15 @@ paths:
               $ref: '#/components/schemas/UpdateProfileRequest'
       responses:
         '200':
-          description: Perfil atualizado
+          description: Profile updated
 
   /plans:
     get:
       tags: [Plans]
-      summary: Listar planos disponíveis
+      summary: List available plans
       responses:
         '200':
-          description: Lista de planos
+          description: List of plans
           content:
             application/json:
               schema:
@@ -237,7 +237,7 @@ paths:
   /subscriptions:
     post:
       tags: [Subscriptions]
-      summary: Criar assinatura de plano
+      summary: Create a plan subscription
       requestBody:
         required: true
         content:
@@ -246,7 +246,7 @@ paths:
               $ref: '#/components/schemas/CreateSubscriptionRequest'
       responses:
         '201':
-          description: Assinatura criada
+          description: Subscription created
           content:
             application/json:
               schema:
