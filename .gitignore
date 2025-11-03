@@ -1,0 +1,75 @@
+# ============================================
+# 🧱 Go Build Artifacts and Binaries
+# ============================================
+# Compiled binaries and dynamic libraries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Common Go binary names (from `go build`)
+main
+app
+
+# ============================================
+# 🧪 Tests and Coverage
+# ============================================
+# Test binaries (built with `go test -c`)
+*.test
+
+# Coverage output files
+*.cover
+coverage.out
+
+# ============================================
+# 📦 Go Workspace and Dependencies
+# ============================================
+# Go workspace files
+go.work
+go.work.sum
+
+# Vendor directory (uncomment if you vendor dependencies)
+# vendor/
+
+# ============================================
+# 💾 Local Databases (GORM / SQLite)
+# ============================================
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# ============================================
+# 🧾 Logs and Runtime Files
+# ============================================
+*.log
+
+# ============================================
+# ⚙️ Environment Variables
+# ============================================
+# Ignore all .env files except the example
+.env
+.env.*
+!/.env.example
+
+# ============================================
+# 🧠 IDE and Editor Settings
+# ============================================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ============================================
+# 💻 OS-Specific Files
+# ============================================
+.DS_Store
+Thumbs.db
+
+# ============================================
+# ✅ End of .gitignore
+# ============================================
